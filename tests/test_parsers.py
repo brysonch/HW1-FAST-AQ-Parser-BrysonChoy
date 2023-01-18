@@ -29,8 +29,11 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
 
-    self.assertRaises(ValueError, FastaParser(bad.fa))
-    self.assertRaises(ValueError, FastaParser(empty.fa))
+    self.assertRaises(ValueError, FastaParser("bad.fa"))
+    self.assertRaises(ValueError, FastaParser("empty.fa"))
+    seq_fasta, line_fasta = FastaParser("~/data/test.fa")
+    seq_txt = Parser("fasta-check.txt")
+    assert seq_fasta == seq_txt
 
 
 
@@ -41,5 +44,8 @@ def test_FastqParser():
     your FastqParser class and assert that it properly
     reads in the example Fastq File.
     """
-    self.assertRaises(ValueError, FastqParser(bad.fa))
-    self.assertRaises(ValueError, FastqParser(empty.fa))
+    self.assertRaises(ValueError, FastqParser("bad.fa"))
+    self.assertRaises(ValueError, FastqParser("empty.fa"))
+    seqname_fastq, seq_fastq, line_fastq = FastqParser("~/data/test.fq")
+    seq_txt = Parser("fastaq-seq.txt")
+    assert seqname_fastq == seq_txt
