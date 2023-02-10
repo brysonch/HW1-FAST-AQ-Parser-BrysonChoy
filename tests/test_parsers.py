@@ -29,11 +29,25 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
 
-    self.assertRaises(ValueError, FastaParser("bad.fa"))
-    self.assertRaises(ValueError, FastaParser("empty.fa"))
+
+    try:
+        empty_p = FastaParser("empty.fa")
+        test_empty = False
+    except ValueError:
+        test_empty = True
+
+    try:
+        bad_p = FastaParser("bad.fa")
+        test_bad = False
+    except ValueError:
+        test_bad = True
+
+    assert test_empty == True, "FastaParser cannot take an empty fasta file"
+    assert test_bad == True, "Input fasta file for FastaParser must be formatted correctly"
+
     seq_fasta, line_fasta = FastaParser("~/data/test.fa")
     seq_txt = Parser("fasta-check.txt")
-    assert seq_fasta == seq_txt
+    assert seq_fasta == seq_txt, "FastaParser does not parse sequences from fasta file correctly"
 
 
 
