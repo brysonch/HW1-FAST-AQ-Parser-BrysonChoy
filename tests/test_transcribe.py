@@ -46,9 +46,9 @@ def test_transcribe():
     except ValueError:
         test_no_str = True
 
-    assert test_empty_str = True, "Input to transcribe cannot be an empty string"
-    assert test_bad_str = True, "Input to transcribe must contain AGCT"
-    assert test_no_str = True, "Input to transcribe must be a string"
+    assert test_empty_str == True, "Input to transcribe cannot be an empty string"
+    assert test_bad_str == True, "Input to transcribe must contain AGCT"
+    assert test_no_str == True, "Input to transcribe must be a string"
 
 
 def test_reverse_transcribe():
@@ -76,7 +76,7 @@ def test_reverse_transcribe():
     except ValueError:
         test_no_str = True
 
-    assert test_empty_str = True, "Input to reverse_transcribe cannot be an empty string"
-    assert test_bad_str = True, "Input to reverse_transcribe must contain AGCT"
-    assert test_no_str = True, "Input to reverse_transcribe must be a string"
+    assert test_empty_str == True, "Input to reverse_transcribe cannot be an empty string"
+    assert test_bad_str == True, "Input to reverse_transcribe must contain AGCT"
+    assert test_no_str == True, "Input to reverse_transcribe must be a string"
 
