@@ -20,6 +20,28 @@ def test_freebie_parser_2():
     """
     assert 1 != 2
 
+
+def get_filepath(which):
+    data_dir = pathlib.Path(__file__).resolve().parent.parent / "data"
+    if which == "fasta":
+        return data_dir / "test.fa"
+    else:
+        return data_dir / "test.fq"
+
+
+def open_fastq_reference():
+    f = pathlib.Path(__file__).resolve().parent / "fastq-check.txt"
+    with f.open() as f:
+        seqs = list(map(lambda l: l.strip().split("|"), f.readlines()))
+    return seqs  # will be list of lists with seq, quality that were parsed from the test files using get-seq.sh
+
+
+def open_fasta_reference():
+    f = pathlib.Path(__file__).resolve().parent / "fasta-check.txt"
+    with f.open() as f:
+        seqs = list(map(lambda l: l.strip(), f.readlines()))
+    return seqs  # will be a list of seqs, quality that were parsed from the test files using get-seq.sh
+
         
 def test_FastaParser():
     """
@@ -31,13 +53,13 @@ def test_FastaParser():
 
 
     try:
-        empty_p = FastaParser("empty.fa")
+        empty_p = FastaParser("~/tests/empty.fa")
         test_empty = False
     except ValueError:
         test_empty = True
 
     try:
-        bad_p = FastaParser("bad.fa")
+        bad_p = FastaParser("~/tests/bad.fa")
         test_bad = False
     except ValueError:
         test_bad = True
