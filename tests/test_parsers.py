@@ -51,7 +51,7 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
 
-"""
+    """
     try:
         empty_p = FastaParser("empty.fa")
         empty_fasta = {}
@@ -72,7 +72,7 @@ def test_FastaParser():
 
     assert test_empty == True, "FastaParser cannot take an empty fasta file"
     assert test_bad == True, "Input fasta file for FastaParser must be formatted correctly"
-"""
+    """
 
     test_fa = FastaParser(get_filepath("fasta"))
     seq_fasta = []
