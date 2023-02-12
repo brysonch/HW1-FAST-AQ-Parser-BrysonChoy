@@ -1,7 +1,11 @@
 # Project 1
 Building a FAST[AQ] Parser + Building a DNA -> RNA Transcriber
 
-# Assignment Overview
+# Assignment Overview - Bryson Choy
+
+Added transcribe, reverse transcribe, fasta and fastq parser tests to be tested with pytest. Includes an extra function for obtaining corrupt filepaths and checks if errors are thrown for incorrectly formatted fasta and fastq files.
+
+
 The purpose of this assignment is to bring everybody up to speed on using python and highlight some of the elements of the language and of OOP that will be _inherited_ by downstream course content. We also hope to use this as an opportunity to learn some of the useful tools within github for software development that will be useful to you in your research experiences down the road. 
 
 The learning goals of this project are:
@@ -22,14 +26,14 @@ The learning goals of this project are:
 
 ## Software Development Assessment 
 - [ x ] Create a pip installable tool (only locally, do not submit to PyPI)
-	- [  ] Edit the `pyproject.toml` file to reflect author information
-	- [  ] Update the dependencies to include those that you use in your code
+	- [X] Edit the `pyproject.toml` file to reflect author information
+	- [X] Update the dependencies to include those that you use in your code
 
 - [ ] Write a unit test (in the test.py file) for
-	- [ ] Fasta Parser
-	- [ ] Fastq Parser
-	- [ ] Transcription
-	- [ ] Reverse Transcription
+	- [X] Fasta Parser
+	- [X] Fastq Parser
+	- [X] Transcription
+	- [X] Reverse Transcription
 
 - [ ] Automate Testing with a [Github Actions](https://docs.github.com/en/actions)
 

@@ -62,6 +62,7 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
 
+    # Test FastaParser with empty and incorrectly formatted fastas, should return errors
     
     try:
         empty_p = FastaParser(get_filepath_corrupt("empty"))
@@ -83,7 +84,8 @@ def test_FastaParser():
 
     assert test_empty == True, "FastaParser cannot take an empty fasta file"
     assert test_bad == True, "Input fasta file for FastaParser must be formatted correctly"
-    
+
+    # Test FastaParser with test file, check if sequences match
 
     test_fa = FastaParser(get_filepath("fasta"))
     seq_fasta = []
@@ -104,6 +106,8 @@ def test_FastqParser():
     reads in the example Fastq File.
     """
 
+    # Test FastaParser with test file, check if sequences and quality strings match
+
     test_fq = FastqParser(get_filepath("fastq"))
     seq_fastq = []
     qual_fastq = []
@@ -111,9 +115,6 @@ def test_FastqParser():
         seq_fastq.append(seq)
         qual_fastq.append(quality)
 
-    #with open("~/data/fasta-check.txt") as file:
-    #    seq_check = [line.rstrip() for line in file]
-    #    qual_check
     seqs_quals = open_fastq_reference()
     seq_check = [line[0] for line in seqs_quals]
     qual_check = [line[1] for line in seqs_quals]
