@@ -114,8 +114,8 @@ def test_FastqParser():
     #with open("~/data/fasta-check.txt") as file:
     #    seq_check = [line.rstrip() for line in file]
     #    qual_check
-    seq_check = open_fastq_reference()[:,0]
-    qual_check = open_fastq_reference()[:,1]
+    seq_check = open_fastq_reference()[:][0]
+    qual_check = open_fastq_reference()[:][1]
 
     assert seq_fastq == seq_check, "FastaParser does not parse sequences from fastq file correctly"
     assert qual_fastq == qual_check, "FastaParser does not parse quality scores from fastq file correctly"
