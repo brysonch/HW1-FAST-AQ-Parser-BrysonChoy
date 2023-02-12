@@ -4,6 +4,9 @@ from seqparser import (
         FastaParser,
         FastqParser)
 
+import pathlib
+import pytest
+
 
 def test_freebie_parser_1():
     """
