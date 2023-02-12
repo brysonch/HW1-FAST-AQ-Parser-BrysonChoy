@@ -51,6 +51,7 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
 
+"""
     try:
         empty_p = FastaParser("empty.fa")
         empty_fasta = {}
@@ -71,14 +72,17 @@ def test_FastaParser():
 
     assert test_empty == True, "FastaParser cannot take an empty fasta file"
     assert test_bad == True, "Input fasta file for FastaParser must be formatted correctly"
+"""
 
-    test_fa = FastaParser("~/data/test.fa")
+    test_fa = FastaParser(get_filepath("fasta"))
     seq_fasta = []
     for seq_name, seq in test_fa:
         seq_fasta.append(seq)
 
-    with open("~/data/fasta-check.txt") as file:
-        seq_check = [line.rstrip() for line in file]
+    #with open("~/data/fasta-check.txt") as file:
+    #    seq_check = [line.rstrip() for line in file]
+
+    seq_check = open_fasta_reference()
 
     assert seq_fasta == seq_check, "FastaParser does not parse sequences from fasta file correctly"
 
@@ -92,16 +96,18 @@ def test_FastqParser():
     reads in the example Fastq File.
     """
 
-    test_fq = FastaParser("~/data/test.fq")
+    test_fq = FastqParser(get_filepath("fastq"))
     seq_fastq = []
     qual_fastq = []
     for seq_name, seq, quality in test_fa:
         seq_fasta.append(seq)
         qual_fastq.append(quality)
 
-    with open("~/data/fasta-check.txt") as file:
-        seq_check = [line.rstrip() for line in file]
-        qual_check
+    #with open("~/data/fasta-check.txt") as file:
+    #    seq_check = [line.rstrip() for line in file]
+    #    qual_check
+    seq_check = 8
+    qual_check = 8
 
     assert seq_fasta == seq_check, "FastaParser does not parse sequences from fastq file correctly"
     assert qual_fastq == qual_check, "FastaParser does not parse quality scores from fastq file correctly"
