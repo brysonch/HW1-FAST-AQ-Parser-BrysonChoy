@@ -51,9 +51,8 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
 
-
     try:
-        empty_p = FastaParser("~/tests/empty.fa")
+        empty_p = FastaParser("empty.fa")
         empty_fasta = {}
         for seq_name, seq in empty_p:
             empty_fasta[seq_name] = seq
@@ -62,7 +61,7 @@ def test_FastaParser():
         test_empty = True
 
     try:
-        bad_p = FastaParser("~/tests/bad.fa")
+        bad_p = FastaParser("bad.fa")
         bad_fasta = {}
         for seq_name, seq in bad_p:
             bad_fasta[seq_name] = seq
@@ -92,8 +91,17 @@ def test_FastqParser():
     your FastqParser class and assert that it properly
     reads in the example Fastq File.
     """
-    self.assertRaises(ValueError, FastqParser("bad.fa"))
-    self.assertRaises(ValueError, FastqParser("empty.fa"))
-    seqname_fastq, seq_fastq, line_fastq = FastqParser("~/data/test.fq")
-    seq_txt = Parser("fastaq-seq.txt")
-    assert seqname_fastq == seq_txt
+
+    test_fq = FastaParser("~/data/test.fq")
+    seq_fastq = []
+    qual_fastq = []
+    for seq_name, seq, quality in test_fa:
+        seq_fasta.append(seq)
+        qual_fastq.append(quality)
+
+    with open("~/data/fasta-check.txt") as file:
+        seq_check = [line.rstrip() for line in file]
+        qual_check
+
+    assert seq_fasta == seq_check, "FastaParser does not parse sequences from fastq file correctly"
+    assert qual_fastq == qual_check, "FastaParser does not parse quality scores from fastq file correctly"
