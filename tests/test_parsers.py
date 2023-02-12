@@ -32,6 +32,14 @@ def get_filepath(which):
         return data_dir / "test.fq"
 
 
+def get_filepath_corrupt(which):
+    data_dir = pathlib.Path(__file__).resolve().parent
+    if which == "empty":
+        return data_dir / "empty.fa"
+    else:
+        return data_dir / "bad.fa"
+
+
 def open_fastq_reference():
     f = pathlib.Path(__file__).resolve().parent / "fastq-check.txt"
     with f.open() as f:
@@ -54,9 +62,9 @@ def test_FastaParser():
     reads in the example Fasta File.
     """
 
-    """
+    
     try:
-        empty_p = FastaParser("empty.fa")
+        empty_p = FastaParser(get_filepath_corrupt("empty"))
         empty_fasta = {}
         for seq_name, seq in empty_p:
             empty_fasta[seq_name] = seq
@@ -65,7 +73,7 @@ def test_FastaParser():
         test_empty = True
 
     try:
-        bad_p = FastaParser("bad.fa")
+        bad_p = FastaParser(get_filepath_corrupt("bad"))
         bad_fasta = {}
         for seq_name, seq in bad_p:
             bad_fasta[seq_name] = seq
@@ -75,7 +83,7 @@ def test_FastaParser():
 
     assert test_empty == True, "FastaParser cannot take an empty fasta file"
     assert test_bad == True, "Input fasta file for FastaParser must be formatted correctly"
-    """
+    
 
     test_fa = FastaParser(get_filepath("fasta"))
     seq_fasta = []
@@ -106,8 +114,8 @@ def test_FastqParser():
     #with open("~/data/fasta-check.txt") as file:
     #    seq_check = [line.rstrip() for line in file]
     #    qual_check
-    seq_check = open_fastq_reference()[0]
-    qual_check = open_fastq_reference()[1]
+    seq_check = open_fastq_reference()[:,0]
+    qual_check = open_fastq_reference()[:,1]
 
     assert seq_fastq == seq_check, "FastaParser does not parse sequences from fastq file correctly"
     assert qual_fastq == qual_check, "FastaParser does not parse quality scores from fastq file correctly"
